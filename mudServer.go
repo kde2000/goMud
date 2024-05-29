@@ -73,6 +73,8 @@ func (me *MudServer) Start() {
 func (me *MudServer) Handle(conn net.Conn) {
 	fmt.Println("User in:", me.Family)
 	defer conn.Close()
+	//很重要。匿名函数可以使用主函数的变量
+	//一个单独的协程来处理读入数据
 	go func() {
 		var buff = make([]byte, 4096)
 		for {
@@ -87,6 +89,7 @@ func (me *MudServer) Handle(conn net.Conn) {
 		}
 
 	}()
+	//很重要。机制不清楚。
 	select {}
 
 }
