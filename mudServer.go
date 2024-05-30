@@ -110,7 +110,6 @@ func (me *MudServer) Handle(conn net.Conn) {
 		}
 
 	}()
-	//很重要。机制不清楚。阻塞主协程
 	select {}
 
 }
